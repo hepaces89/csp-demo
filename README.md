@@ -72,7 +72,22 @@ The above CSP Policy header contains a CSP Policy with four directives:
  - `media-src cdn1.example.com cdn2.example.com` - with a directive name of `media-src` and directive value of `cdn1.example.com cdn2.example.com`
  - `script-src scripts.example.com` - with a directive name of `script-src` and directive value of `scripts.example.com`
 
+### CSP Directives
+CSP Directives are typically used to manage page access to various resources, and can be split into two groups that I call:
+"Resource Restriction" and "Reporting".
 
+#### Reporting Directives
+The "Reporting" directives pretty much just consist of the `report-uri` directive.
+```
+Content-Security-Policy: default-src 'none'; style-src cdn.example.com; report-uri /csp-reports
+```
+This `report-uri` tells the browser to `POST` a "violation report" contained in a JSON body to the specified URL ("/csp-reports" in the example above). For more details about this feature, please see MDN's excellent [documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#enabling_reporting)
+
+#### Resource Restriction Directives
+"Resource Restriction" directives limit the pages ability to access certain type of resources as specifed by the directive.
+These include the commonly seen `default-src`, `img-src`, `script-src`, and others.
+In my mind, I see these directives as nodes on a tree where `default-src` is the fall back directive that governs all resource access that is not
+specified by another more narrowly scoped directive such as `script-src`.
 
 
 ### Applicability
