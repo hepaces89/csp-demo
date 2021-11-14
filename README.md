@@ -105,3 +105,4 @@ Nested
 ## Resources:
  - https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
  - https://www.w3.org/TR/CSP2/
+ - https://csp-evaluator.withgoogle.com/
