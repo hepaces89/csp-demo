@@ -8,9 +8,12 @@ const port = 3000
 
 app.get('/', (req, res) => {
     fs.readFile('./templates/template.html', 'utf8', (err, content) => {
-        let nonceVal = crypto.randomBytes(20).toString('hex');
-        res.set("Content-Security-Policy-Report-Only", "default-src 'self' 'nonce" + nonceVal + "" + "; report-uri /csp-report")
-        res.send(Mustache.render(content, {nonce: nonceVal}))
+        // should be a dynamically generated value but using a constant for demo purposes
+        const nonceVal = '39ed1ce2305094fe60b18e7bc526271ea23ec859'
+        // e.g. for production purposes, use something like: crypto.randomBytes(20).toString('hex');
+        const csp = req.query.cspPolicy?req.query.cspPolicy: "default-src 'self' 'nonce-" + nonceVal + "" + "; report-uri /csp-report"
+        res.set("Content-Security-Policy-Report-Only", csp)
+        res.send(Mustache.render(content, {nonce: nonceVal, policy: csp}))
     })
   
 })

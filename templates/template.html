@@ -5,6 +5,11 @@
     <body>
         <h1>CSP Demo Page</h1>
         <button id='btn1'>Button 1</button>
+        <form name="csp-updater" method="get" target="_self">
+            <label for="cspPolicy">Update the CSP policy here:</label>
+            <input type="text" name="cspPolicy" id="csp-policy" value="{{policy}}" size=200>
+            <input type="submit" value="Update">
+        </form>
     </body>
     <footer>
         <script src="/js/main.js"></script>
