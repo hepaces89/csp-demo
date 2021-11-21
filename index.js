@@ -1,7 +1,7 @@
 const express = require('express')
 const fs = require('fs')
-var Mustache = require('mustache');
-var crypto = require("crypto");
+const Mustache = require('mustache');
+const crypto = require("crypto");
 
 const app = express()
 const port = 3000
@@ -9,10 +9,10 @@ const port = 3000
 app.get('/', (req, res) => {
     fs.readFile('./templates/template.html', 'utf8', (err, content) => {
         // should be a dynamically generated value but using a constant for demo purposes
-        const nonceVal = '39ed1ce2305094fe60b18e7bc526271ea23ec859'
+        const nonceVal = 'aRrnd0mN0nc3'
         // e.g. for production purposes, use something like: crypto.randomBytes(20).toString('hex');
-        const csp = req.query.cspPolicy?req.query.cspPolicy: "default-src 'self' 'nonce-" + nonceVal + "" + "; report-uri /csp-report"
-        res.set("Content-Security-Policy-Report-Only", csp)
+        const csp = req.query.cspPolicy?req.query.cspPolicy: "default-src 'self' 'nonce-" + nonceVal + "'" + "; report-uri /csp-report"
+        res.set("Content-Security-Policy", csp)
         res.send(Mustache.render(content, {nonce: nonceVal, policy: csp}))
     })
   
