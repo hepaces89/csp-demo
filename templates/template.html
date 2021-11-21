@@ -1,6 +1,6 @@
 <html>
     <head>
-        <script nonce="{{nonce}}">alert('hi')</script>
+        <script nonce="<%nonce%>">alert('hi')</script>
         <script
 			  src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
 			  integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
@@ -11,10 +11,10 @@
     <body>
         <h1>CSP Demo Page</h1>
         <button id='btn1'>Button 1</button>
-        <div>Static Nonce Value: {{nonce}}</div>
+        <div>Static Nonce Value: <%nonce%></div>
         <form name="csp-updater" method="get" target="_self">
             <label for="cspPolicy">Update the CSP policy here:</label>
-            <input type="text" name="cspPolicy" id="csp-policy" value="{{policy}}" size=200>
+            <input type="text" name="cspPolicy" id="csp-policy" value="<%policy%>" size=200>
             <input type="submit" value="Update">
         </form>
         <img src="https://i.imgur.com/PEd9sH8.jpeg" alt="Missing soup and sandwich image from imgur" width = 300px>

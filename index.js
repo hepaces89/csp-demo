@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
         // e.g. for production purposes, use something like: crypto.randomBytes(20).toString('hex');
         const csp = req.query.cspPolicy?req.query.cspPolicy: "default-src 'self'; report-uri /csp-report; img-src 'self' *.imgur.com; script-src 'self' code.jquery.com 'nonce-2726c7f26c' cdn.jsdelivr.net"
         res.set("Content-Security-Policy", csp)
-        res.send(Mustache.render(content, {nonce: nonceVal, policy: csp}))
+        res.send(Mustache.render(content, {nonce: nonceVal, policy: csp}, {}, [ '<%', '%>' ]))
     })
   
 })
