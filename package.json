@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "build_vue": "npx vue-cli-service build --target lib --name myLib --dest ./public/js/compiled_vue/ ./vue/single-vue.vue"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,10 @@
   },
   "homepage": "https://github.com/hepaces89/csp-demo#readme",
   "dependencies": {
+    "@vue/cli": "^4.5.15",
+    "@vue/cli-service": "^4.5.15",
     "express": "^4.17.1",
-    "mustache": "^4.2.0"
+    "mustache": "^4.2.0",
+    "vue-template-compiler": "^2.6.14"
   }
 }
