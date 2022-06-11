@@ -7,6 +7,7 @@
 			  crossorigin="anonymous">
             </script>
             <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+            <link rel='stylesheet' href='./js/compiled_vue/myLib.css'>
     </head>
     <body>
         <h1>CSP Demo Page</h1>
@@ -17,10 +18,19 @@
             <input type="text" name="cspPolicy" id="csp-policy" value="<%policy%>" size=200>
             <input type="submit" value="Update">
         </form>
+        <div id="vue-app">
+            {{ message }}
+        </div>
+        <div id="app">
+            <demo></demo>
+        </div>
         <img src="https://i.imgur.com/PEd9sH8.jpeg" alt="Missing soup and sandwich image from imgur" width = 300px>
         <img src="/images/tree_well.jpeg" alt="Missing self hosted tree well image">
     </body>
     <footer>
+        <script src="/js/compiled_vue/myLib.umd.js"></script>
         <script src="/js/main.js"></script>
+        <!-- <script src="/js/vue/vue_code.js"></script> -->
+        <script src="/js/vue/vue_compiled.js"></script>
     </footer>
 </html>
